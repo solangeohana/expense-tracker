@@ -2,19 +2,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const incomeSchema = new Schema({
-    Description: {
-        type: String,
-        required: [true, 'Please add a description']
-    },
-    Value: {
+    value: {
         type: Number,
         required: [true, 'Please add a value']
     },
-    Date: {
+    category: {
+        type: String
+    },
+    date: {
         type: Date,
         default: Date.now()
-    }
-    //owner
+    },
+    owner: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 const Income = mongoose.model('Income', incomeSchema);

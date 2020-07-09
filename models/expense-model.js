@@ -8,11 +8,15 @@ const expenseSchema = new Schema({
     value: {
         type: Number,
     },
+    category: {
+        type: String
+    },
     date: {
         type: Date,
         default: Date.now()
-    }
-    //owner
+    },
+    owner: { type: Schema.Types.ObjectId, ref: 'User' }
+    
 });
 
 const Expense = mongoose.model('Expense', expenseSchema);
