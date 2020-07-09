@@ -9,8 +9,10 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 const cors         = require('cors');
+const session       = require('express-session');
+const passport      = require('passport');
 
-
+require('./configs/passport');
 
 mongoose
   .connect('mongodb://localhost/expense-tracker', {useNewUrlParser: true})
@@ -47,6 +49,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
+//session settings 
+const MongoStore = require('connect-mongo')(session);
+app.use(session({
+  secret: "doesn't matter in our case", // but it's required
+  resave: false,
+  saveUninitialized: false, // don't create cookie for non-logged-in user
+  // MongoStore makes sure the user stays logged in also when the server restarts
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
@@ -64,5 +78,8 @@ const index = require('./routes/index');
 app.use('/', index);
 const expenses= require('./routes/expense-routes')
 app.use("/expenses", expenses);
-
+const incomes= require('./routes/income-routes')
+app.use("/incomes", incomes);
+const auth= require('./routes/auth-routes')
+app.use("/api", auth);
 module.exports = app;

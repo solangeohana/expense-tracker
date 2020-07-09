@@ -16,11 +16,14 @@ router.get('/', (req, res, next) => {
   });
 
 // POST route => to create a new expense
-router.post('/new', (req, res, next) => {
+router.post('/', (req, res, next) => {    /////// before : /new
 
     Expense.create({
       description: req.body.description,
       value: req.body.value,
+      category: req.body.category,
+      owner: req.user._id
+
     })
       .then(newExpense => {
         res.json(newExpense); 
@@ -30,7 +33,6 @@ router.post('/new', (req, res, next) => {
       });
   });
   
-
   // GET route => to get a specific expense/detailed view
   router.get('/:id', (req, res, next) => {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
