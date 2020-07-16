@@ -3,8 +3,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import AddExpense from './AddExpense'; 
-import Header from '../Navbar/Header'
 import EditExpense from './EditExpense';
+import Button from '../UI/Button'
+import moment from 'moment';
 
 
 class ExpenseList extends Component {
@@ -18,6 +19,7 @@ class ExpenseList extends Component {
   getAllExpenses = () =>{
     axios.get("/expenses") 
     .then(response => {
+      console.log("response.data ===>",response.data)
       this.setState({
         listOfExpenses: response.data
       })
@@ -39,19 +41,19 @@ class ExpenseList extends Component {
   render(){
     return(
       <div>
-      <Header/>
       <AddExpense getAllExpenses={this.getAllExpenses}/>
-        <div>
-        <h3>List of expenses :</h3>
+        <div className=".fl w-50 pa2">
+        <h3 className="flex flex-column-l ma2 pa3">List of expenses :</h3>
           { this.state.listOfExpenses.map( expense => {
             return (
-              <div key={expense._id}>
-                <Link to={`/expenses/edit/${expense._id}`} >
-                  <div className= 'tl bg-light-pink br3 pa3 ma2 dib bw2 shadow-5 grow'>
-                  {expense.description} : {expense.value}€
-                  <button onClick={() => this.deleteHandler(expense._id)}>Delete</button>
+              <div className="flex flex-column-l" key={expense._id}>
+
+                  <div className= 'tc bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 grow'>
+                  <p>{moment(expense.date).format("DD MMMM YYYY")}</p>
+                  <p>{expense.description} : {expense.value}€</p>
+                  <Button name="Delete" color="bg-dark-blue" onClick={() => this.deleteHandler(expense._id)}>Delete</Button>
                   </div>
-                </Link>
+                
               </div>
             )})
           }
@@ -62,3 +64,9 @@ class ExpenseList extends Component {
 }
 
 export default ExpenseList;
+
+/*
+
+<Link to={`/expenses/edit/${expense._id}`} > 
+
+*/ 

@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Button from '../UI/Button'
+import Home from '../Navbar/Home';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 class AddExpense extends Component {
     constructor(props) {
@@ -7,7 +12,8 @@ class AddExpense extends Component {
         this.state = {
             description: "",
             value: 0,
-            category: ["select", "food", "clothes", "house", "insurances", "health", "travel", "utility bills", "pets", "car", "education", "sports", "cigarettes", "taxi", "public transports", "beauty", "other"]
+            category: ["select", "food", "clothes", "house", "insurances", "health", "travel", "utility bills", "pets", "car", "education", "sports", "cigarettes", "taxi", "public transports", "beauty", "gadgets", "other"],
+            date: new Date()
         };
     }
 
@@ -27,16 +33,23 @@ class AddExpense extends Component {
         this.setState({ category: category });
     }
 
+    handleChangeDate = date => {
+        this.setState({
+            date: date
+        });
+    }
+
     handleFormSubmit = (event) => {
         event.preventDefault();
         const description = this.state.description;
         const value = this.state.value;
         const category = this.state.category;
+        const date = this.state.date;
 
-        axios.post("/expenses", { description, value, category })
+        axios.post("/expenses", { description, value, category, date })
             .then((resp) => {
                 console.log("response ====> ", resp)
-                this.setState({ description: "", value: "", category: this.state.category[0]});
+                this.setState({ description: "", value: "", category: this.state.category[0], date: Date.now() });
                 this.props.getAllExpenses()
             })
     }
@@ -44,13 +57,15 @@ class AddExpense extends Component {
     render() {
         return (
             <div>
-                <h3 className = "tl">Add an expense:</h3>
-                <div className='tc bg-light-pink br3 pa3 ma2 dib bw2 shadow-5 flex'>
+                <h3 className="tl">Add an expense:</h3>
+                <div className='tc bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 flex'>
                     <form onSubmit={this.handleFormSubmit}>
                         <label>Description:</label>
                         <input type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
+                        <br/>
                         <label>Value:</label>
                         <input type="number" name="value" value={this.state.value} onChange={e => this.handleChange(e)} />
+                        <br/>
                         <label>Category:</label>
                         <select value={this.state.category} onChange={e => this.handleChangeCategory(e)}>
                             <option value="select">Select</option>
@@ -69,9 +84,16 @@ class AddExpense extends Component {
                             <option value="taxi">Taxi</option>
                             <option value="public transports">Public Transports</option>
                             <option value="beauty">Beauty</option>
+                            <option value="gadgets">Gadgets</option>
                             <option value="other">Other</option>
                         </select>
-                        <input type="submit" value="Submit" />
+                        <br/>
+                        <label>Date:</label>
+                        <DatePicker
+                            selected={this.state.date}
+                            onChange={this.handleChangeDate}
+                        />
+                        <Button name="ADD" color="bg-dark-blue"><input type="submit" value="Submit"/></Button>
                     </form>
                 </div>
             </div>
