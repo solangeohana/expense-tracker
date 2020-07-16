@@ -21,6 +21,7 @@ router.post('/', (req, res, next) => {
     Income.create({
       value: req.body.value,
       category: req.body.category,
+      date: req.body.date,
       owner: req.user._id
     })
       .then(newIncome => {

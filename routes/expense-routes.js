@@ -6,7 +6,7 @@ const Expense = require('../models/expense-model');
 
 // GET route => to get all the expenses
 router.get('/', (req, res, next) => {
-    Expense.find()
+    Expense.find({ owner: req.user._id })
       .then(allTheExpenses => {
         res.json(allTheExpenses);
       })
@@ -22,6 +22,7 @@ router.post('/', (req, res, next) => {    /////// before : /new
       description: req.body.description,
       value: req.body.value,
       category: req.body.category,
+      date: req.body.date,
       owner: req.user._id
 
     })
@@ -63,7 +64,7 @@ router.post('/', (req, res, next) => {    /////// before : /new
       res.status(400).json({ message: 'Specified id is not valid' });
       return;
     }
-   
+   //secure later
     Expense.findByIdAndRemove(req.params.id)
       .then(() => {
         res.json({ message: `Expense with ${req.params.id} is removed successfully.` });

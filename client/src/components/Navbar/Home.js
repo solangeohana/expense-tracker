@@ -8,6 +8,7 @@ function Home() {
             <ul>
                 <li><h1><Link to={"/expenses"}>Expenses</Link></h1></li>
                 <li><h1><Link to={"/incomes"}>Incomes</Link></h1></li>
+                <p>later on : total of expenses/income this month</p>
             </ul>
         </div>
     )

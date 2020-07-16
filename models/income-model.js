@@ -11,7 +11,6 @@ const incomeSchema = new Schema({
     },
     date: {
         type: Date,
-        default: Date.now()
     },
     owner: { type: Schema.Types.ObjectId, ref: 'User' }
 });
