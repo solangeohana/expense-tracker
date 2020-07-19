@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-
+import Navbar from '../Navbar/Navbar'
 
 class BalanceToday extends Component {
   constructor(props){
@@ -62,6 +62,7 @@ class BalanceToday extends Component {
     
     return(
         <div>
+        <Navbar/>
         <div>
         <div className=".fl w-50 pa2">
         <h4 className="flex flex-column-l ma2 pa3">Expenses :</h4>

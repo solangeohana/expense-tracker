@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route, Link } from 'react-router-dom'
 
-import AddExpense from './components/expenses/AddExpense';
 import AddIncome from './components/incomes/AddIncome';
 import ExpenseList from './components/expenses/ExpenseList';
 import Home from './components/Navbar/Home'
@@ -10,7 +9,6 @@ import IncomeList from './components/incomes/IncomeList';
 import EditExpense from './components/expenses/EditExpense'
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
-import Navbar from './components/Navbar/Navbar'
 import BalanceToday from './components/Today/BalanceToday';
 
 class App extends Component {
@@ -31,10 +29,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-      <div>
-        <Navbar updateUser={this.updateUser}/>
-      </div>
+      <div className="">
       <div>
        {this.state.loggedInUser ? <h1> Welcome {this.state.loggedInUser.email} !</h1> : ""}
         <Switch>

@@ -6,7 +6,7 @@ const Income = require('../models/income-model');
 
 // GET route => to get all the expenses
 router.get('/', (req, res, next) => {
-    Income.find()
+    Income.find({ owner: req.user._id })
       .then(allTheIncomes => {
         res.json(allTheIncomes);
       })

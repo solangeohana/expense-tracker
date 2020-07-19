@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import Button from '../UI/Button'
-
+import Navbar from '../Navbar/Navbar'
 import AddIncome from './AddIncome'; 
 
 class IncomeList extends Component {
@@ -37,13 +36,14 @@ class IncomeList extends Component {
   render(){
     return(
       <div>
+            <Navbar/>
             <AddIncome getAllIncomes={this.getAllIncomes}/>
         <div>
           { this.state.listOfIncomes.map( income => {
             return (
               <div key={income._id}>
                 {/* <Link to={`/incomes/${income._id}`}> */}
-                  <div className= 'tc flex bg-light-green br3 pa3 ma2 dib bw2 shadow-5 grow'>
+                  <div className= 'tc flex bg-light-green br3 pa3 ma2 dib bw2 shadow-5 grow w-80'>
                   {income.category} : {income.value}€
                   <Button name="Delete" color="bg-dark-green" onClick={() => this.deleteHandler(income._id)}>Delete</Button>
                   </div>
