@@ -7,6 +7,7 @@ import 'tachyons';
 import { BrowserRouter as Router } from 'react-router-dom'; 
 import axios from 'axios'
 
+
 axios.get('/api/checkuser').then(res => {
   ReactDOM.render(
     <Router><App user={res.data} /></Router>, document.getElementById('root'));

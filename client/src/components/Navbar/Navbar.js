@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
-import HomeLink from './HomeLink';
 import Button from '../UI/Button'
 
 class Navbar extends Component {
@@ -22,18 +21,23 @@ class Navbar extends Component {
     
     render() {
         return (
-            <nav className="flex justify-between br3 pa3 ma2 dib bw2 bg-light-gray">
+        <div>
+            <header className="bg-white black-80 tc pv4 avenir">
+            <h1 className="mt2 mb0 baskerville i fw1 f1">Expense-Tracker</h1>
+            <h2 className="mt2 mb0 f6 fw4 ttu tracked">Never wonder why you're broke again</h2>
+            <nav className="bt bb tc mw7 center mt4">
                 {this.state.redirect ? <Redirect to="/login"></Redirect> : null}
-                <Link to={"/daily"}>Daily</Link>
-                <Link to={"/monthly"}>Monthly</Link>
-                <Link to={"/yearly"}>Yearly</Link>
-                <Link to={"/charts"}>Charts</Link>
-                <Button onClick={this.handleLogout} name="Logout" color="bg-black"></Button>
-                <HomeLink/>
+                <a className="f6 f5-l link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" href="/">Home</a>
+                <a className="f6 f5-l link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l" href="/daily">Today</a>
+                <a className="f6 f5-l link bg-animate black-80 hover-bg-light-pink dib pa3 ph4-l" href="/charts">Charts</a>
+                <Button onClick={this.handleLogout} name="Logout" color="bg-gray"></Button>
             </nav>
+            </header>
+        </div>
         );
     }
 
 }
 export default Navbar;
+
 

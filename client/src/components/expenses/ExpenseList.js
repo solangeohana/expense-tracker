@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import Navbar from '../Navbar/Navbar'
 import AddExpense from './AddExpense'; 
-import EditExpense from './EditExpense';
 import Button from '../UI/Button'
 import moment from 'moment';
 
@@ -41,15 +40,15 @@ class ExpenseList extends Component {
   render(){
     return(
       <div>
+      <Navbar/>
       <AddExpense getAllExpenses={this.getAllExpenses}/>
-        <div className=".fl w-50 pa2">
-        <h3 className="flex flex-column-l ma2 pa3">List of expenses :</h3>
+        <div>
+        <h3 className="ma2 pa3">List of expenses :</h3>
           { this.state.listOfExpenses.map( expense => {
             return (
-              <div className="flex flex-column-l" key={expense._id}>
-
-                  <div className= 'tc bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 grow'>
-                  <p>{moment(expense.date).format("DD MMMM YYYY")}</p>
+              <div className="" key={expense._id}>
+                  <div className= '.flex-row tc inline bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 grow w-80'>
+                  <strong>{moment(expense.date).format("DD MMMM YYYY")}</strong>
                   <p>{expense.description} : {expense.value}€</p>
                   <Button name="Delete" color="bg-dark-blue" onClick={() => this.deleteHandler(expense._id)}>Delete</Button>
                   </div>
