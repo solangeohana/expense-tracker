@@ -48,7 +48,7 @@ class Signup extends Component {
                     </form>
                 </div>
                 <div>
-                    <a href={`${process.env.REACT_APP_BASE_URL}/api/google`}>Sign up with Google</a>
+                    <a href="http://localhost:5555/api/google">Sign up with Google</a>
                     <br/>
                     <p>Already have an account?
                         <Link to={"/login"}> Login</Link>
