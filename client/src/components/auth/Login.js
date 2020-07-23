@@ -65,7 +65,7 @@ class Login extends Component {
                 </div>
                 <br/>
                 <div className="measure center">
-                    <a href="http://localhost:5555/api/google" className="f4 fw6 db black link hover-blue">
+                    <a href={`${process.env.REACT_APP_BASE_URL}/api/google`} className="f4 fw6 db black link hover-blue">
                         <img src={imgUrl} alt="logo google" height="50px"></img>
                     </a>
                     <br />

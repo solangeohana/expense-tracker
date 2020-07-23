@@ -65,14 +65,6 @@ app.use(passport.session());
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
-//CORS
-app.use(
-  cors({
-    credentials: true,
-    origin: ['http://localhost:3000'] 
-  })
-);
-
 //routes middleware
 const index = require('./routes/index');
 app.use('/', index);
