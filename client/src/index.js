@@ -11,7 +11,7 @@ import axios from 'axios'
 axios.get(`/api/checkuser`)
 .then(res => {
   ReactDOM.render(
-    <Router><App user={res.data} /></Router>, document.getElementById('root'));
+    <Router><App user={res.data.userDoc} /></Router>, document.getElementById('root'));
 })
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route, Link, Redirect } from 'react-router-dom'
 
 import AddIncome from './components/incomes/AddIncome';
 import ExpenseList from './components/expenses/ExpenseList';
@@ -11,12 +11,9 @@ import Login from './components/auth/Login';
 import BalanceToday from './components/Today/BalanceToday';
 class App extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      loggedInUser: this.user
-    }
-  }
+  state = {
+    loggedInUser: this.props.user
+  } 
 
   updateUser = (newUser) => {
     this.setState({
@@ -30,7 +27,10 @@ class App extends Component {
       <div className="">
       <div>
         <Switch>
-          <Route exact path='/' component={Home}/>
+          <Route exact path='/' render={() => {
+
+            return this.state.loggedInUser ? <Home/> : <Redirect to="/login"></Redirect>
+          }}></Route>
           <Route exact path="/signup" render={() => <Signup updateUser={this.updateUser}></Signup>} />
           <Route exact path="/login" render={() => <Login updateUser={this.updateUser}></Login>} />
           <Route exact path='/expenses' component={ExpenseList}/>
