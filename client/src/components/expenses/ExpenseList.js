@@ -39,23 +39,36 @@ class ExpenseList extends Component {
 
   render(){
     return(
-      <div>
+      <div className="bg-washed-red">
       <Navbar/>
       <AddExpense getAllExpenses={this.getAllExpenses}/>
-        <div>
-        <h3 className="ma2 pa3">List of expenses :</h3>
+        <div className="pa4">
+        <div className="overflow-auto">
+        <table className='f6 w-100 mw8 center shadow-5' cellSpacing="0">
+        <thead>
+        <tr>
+          <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Description</th>
+          <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Value</th>
+          <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Category</th>
+          <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Date</th>
+          <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Delete</th>
+        </tr>
+        </thead>
+        <tbody className="lh-copy">
           { this.state.listOfExpenses.map( expense => {
             return (
-              <div className="" key={expense._id}>
-                  <div className= '.flex-row tc inline bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 grow w-80'>
-                  <strong>{moment(expense.date).format("DD MMMM YYYY")}</strong>
-                  <p>{expense.description} : {expense.value}€</p>
-                  <Button name="Delete" color="bg-dark-blue" onClick={() => this.deleteHandler(expense._id)}>Delete</Button>
-                  </div>
-                
-              </div>
+              <tr className=" tc bg-light-pink shadow-5 grow" key={expense._id}>
+                  <td>{expense.description}</td>
+                  <td>{expense.value}€</td>
+                  <td>{expense.category}</td>
+                  <td>{moment(expense.date).format("DD MMMM YYYY")}</td>
+                  <td><Button name="Delete" color="bg-hot-pink" onClick={() => this.deleteHandler(expense._id)}>Delete</Button></td>
+              </tr>
             )})
           }
+          </tbody>
+          </table>
+        </div>
         </div>
       </div>
     )
@@ -63,9 +76,3 @@ class ExpenseList extends Component {
 }
 
 export default ExpenseList;
-
-/*
-
-<Link to={`/expenses/edit/${expense._id}`} > 
-
-*/ 

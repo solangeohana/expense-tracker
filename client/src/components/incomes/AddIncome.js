@@ -55,16 +55,17 @@ class AddIncome extends Component {
 
     render() {
         return (
-            <div>
-                <h3 className = "flex flex-column">Add an income</h3>
-                <div className='tc bg-light-green br3 pa3 ma2 dib bw2 shadow-5'>
-                    <form className="pa4 black-80" onSubmit={this.handleFormSubmit}>
-                        <div className="measure">
-                        <label className=" tl f6 b db mb2">Value:</label>
-                        <input className="input-reset ba b--black-20 pa2 mb2 db w-50" type="number" name="value" value={this.state.value} onChange={e => this.handleChange(e)} />
+            <div className="tc">
+                <h3 className = "f4 fw6 ph0 mh0">Add income</h3>
+                <div className='bg-light-green br3 pa1 ma2 dib bw2 shadow-5'>
+                
+                    <form className="tl measure center" onSubmit={this.handleFormSubmit}>
+                        <div className="mt3">
+                        <label className="ma2 fw6 f6">Value:</label>
+                        <input className="pa2 input-reset ba bg-lightest-green w-30" type="number" name="value" value={this.state.value} onChange={e => this.handleChange(e)} />
                         <br/>
-                        <label className=" tl f6 b db mb2">Category:</label>
-                        <select className= "fl" value={this.state.category} onChange={e => this.handleChangeCategory(e)}>
+                        <label className="ma2 fw6 f6">Category:</label>
+                        <select className="pa2 input-reset ba bg-lightest-green w-60" value={this.state.category} onChange={e => this.handleChangeCategory(e)}>
                             <option value="select">Select</option>
                             <option value="salary">Salary</option>
                             <option value="gift">Gift</option>
@@ -72,14 +73,15 @@ class AddIncome extends Component {
                             <option value="other">Other</option>
                         </select>
                         <br/>
-                        <label className=".tl f6 b db mb2">Date:</label>
+                        <label className="ma2 fw6 f6">Date:</label>
                         <DatePicker
                             selected={this.state.date}
                             onChange={this.handleChangeDate}
                         />
-                        <Button name="ADD" color="bg-dark-green"><input type="submit" value="Submit" /></Button>
+                        <div className="tc"><Button name="ADD" color="bg-dark-green"><input type="submit" value="Submit" /></Button></div>
                         </div>
                     </form>
+                    
                 </div>
             </div>
         )

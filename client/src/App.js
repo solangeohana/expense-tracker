@@ -31,7 +31,6 @@ class App extends Component {
     return (
       <div className="">
       <div>
-       {this.state.loggedInUser ? <h1> Welcome {this.state.loggedInUser.email} !</h1> : ""}
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route exact path="/signup" render={() => <Signup updateUser={this.updateUser}></Signup>} />

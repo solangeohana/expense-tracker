@@ -45,6 +45,10 @@ class Login extends Component {
         const imgUrl = "https://support.clever.com/hc/article_attachments/360054105332/google.png"
         return (
             <div className="pa4 bg-lightest-blue black-80">
+            <h1 className="tc mt2 mb0 baskerville i fw1 f1">Expense-Tracker</h1>
+            <h2 className=" tc mt2 mb0 f6 fw4 ttu tracked">Never wonder why you're broke again</h2>
+            <br/>
+            <br/>
                 <div>
                     {this.state.errorMessage ? <h1>{this.state.errorMessage}</h1> : null}
                     {this.state.redirect ? <Redirect to="/" /> : null}
