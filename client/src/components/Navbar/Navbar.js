@@ -12,7 +12,7 @@ class Navbar extends Component {
     }
 
     handleLogout =() => {
-        axios.post("/api/logout")
+        axios.post(`${process.env.REACT_APP_API_URL}/api/logout`, {withCredentials: true})
          .then((resp) => {
           this.setState({ redirect: true })
           this.props.updateUser(resp.data)

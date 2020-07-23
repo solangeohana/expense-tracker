@@ -16,7 +16,7 @@ class ExpenseList extends Component {
   }
 
   getAllExpenses = () =>{
-    axios.get("/expenses") 
+    axios.get(`${process.env.REACT_APP_API_URL}/expenses`, {withCredentials: true}) 
     .then(response => {
       console.log("response.data ===>",response.data)
       this.setState({
@@ -26,7 +26,7 @@ class ExpenseList extends Component {
   }
 
   deleteHandler = (expenseID) => {
-    axios.delete('/expenses/' + expenseID).then(() => {
+    axios.delete(`${process.env.REACT_APP_API_URL}/expenses/`, {withCredentials: true} + expenseID).then(() => {
       this.setState({
         listOfExpenses: this.state.listOfExpenses.filter(e => e._id !== expenseID)
       })

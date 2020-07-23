@@ -13,9 +13,8 @@ class BalanceToday extends Component {
           isLoading: true
         };
   }
-
   getAllDailyExpenses = () =>{
-    axios.get("/expenses") 
+    axios.get(`${process.env.REACT_APP_API_URL}/expenses`, {withCredentials: true}) 
     .then(response => {
       this.setState({
         listOfDailyExpenses: response.data,
@@ -25,7 +24,7 @@ class BalanceToday extends Component {
   }
   
   getAllDailyIncomes = () =>{
-    axios.get("/incomes") 
+    axios.get(`${process.env.REACT_APP_API_URL}/incomes`, {withCredentials: true}) 
     .then(response => {
       this.setState({
         listOfDailyIncomes: response.data,
