@@ -4,33 +4,33 @@ import moment from 'moment';
 import Navbar from '../Navbar/Navbar'
 
 class BalanceToday extends Component {
-  constructor(props){
-      super(props);
-      this.state = { 
-          listOfDailyExpenses: [],
-          listOfDailyIncomes:[],
-          today: Date.now(),
-          isLoading: true
-        };
+  constructor(props) {
+    super(props);
+    this.state = {
+      listOfDailyExpenses: [],
+      listOfDailyIncomes: [],
+      today: Date.now(),
+      isLoading: true
+    };
   }
-  getAllDailyExpenses = () =>{
-    axios.get(`/api/expenses`) 
-    .then(response => {
-      this.setState({
-        listOfDailyExpenses: response.data,
-        isLoading: false
+  getAllDailyExpenses = () => {
+    axios.get(`/api/expenses`)
+      .then(response => {
+        this.setState({
+          listOfDailyExpenses: response.data,
+          isLoading: false
+        })
       })
-    })
   }
-  
-  getAllDailyIncomes = () =>{
-    axios.get(`/api/incomes`) 
-    .then(response => {
-      this.setState({
-        listOfDailyIncomes: response.data,
-        isLoading: false
+
+  getAllDailyIncomes = () => {
+    axios.get(`/api/incomes`)
+      .then(response => {
+        this.setState({
+          listOfDailyIncomes: response.data,
+          isLoading: false
+        })
       })
-    })
   }
 
   componentDidMount() {
@@ -38,65 +38,92 @@ class BalanceToday extends Component {
     this.getAllDailyIncomes();
   }
 
-  render(){
-       if(this.state.isLoading){
-          return <div>Loading...</div>
-      }
-      
+  render() {
+    if (this.state.isLoading) {
+      return <div>Loading...</div>
+    }
+
     const filteredIncomes = this.state.listOfDailyIncomes.filter(d => {
-        return moment(d.date).format("DD MMMM YYYY") === moment(this.state.today).format("DD MMMM YYYY")
+      return moment(d.date).format("DD MMMM YYYY") === moment(this.state.today).format("DD MMMM YYYY")
     })
     const filteredExpenses = this.state.listOfDailyExpenses.filter(d => {
-        return moment(d.date).format("DD MMMM YYYY") === moment(this.state.today).format("DD MMMM YYYY")
+      return moment(d.date).format("DD MMMM YYYY") === moment(this.state.today).format("DD MMMM YYYY")
     })
     const mappedIncomesByValue = filteredIncomes.map((income) => {
-        return income.value
+      return income.value
     })
     const mappedExpensesByValue = filteredExpenses.map((expense) => {
-        return expense.value
+      return expense.value
     })
     const resultIncome = mappedIncomesByValue.reduce((a, b) => a + b, 0)
     const resultExpense = mappedExpensesByValue.reduce((a, b) => a + b, 0)
     const totalBalance = resultIncome - resultExpense
-    
-    return(
-        <div>
-        <Navbar/>
-        <div>
-        <div className=".fl w-50 pa2">
-        <h4 className="flex flex-column-l ma2 pa3">Expenses :</h4>
-          { filteredExpenses.map( expense => {
+
+    return (
+      <div className="bg-lightest-blue">
+        <Navbar />
+        <div className="pa4">
+          <div className="overflow-auto">
+            <h6 className="tc f6 f2-m f1-l fw2 black-90 mv3">Expenses :</h6>
+            <table className='f6 w-100 mw8 center shadow-5' cellSpacing="0">
+              <thead>
+                <tr>
+                  <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Description</th>
+                  <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Value</th>
+                  <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Category</th>
+                  <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Date</th>
+                </tr>
+              </thead>
+
+              <tbody className="lh-copy">
+                {filteredExpenses.map(expense => {
+                  return (
+                    <tr className="tc bg-light-pink shadow-5 grow" key={expense._id}>
+                      <td>{expense.description}</td>
+                      <td>{expense.value}€</td>
+                      <td>{expense.category}</td>
+                      <td>{moment(expense.date).format("DD MMMM YYYY")}</td>
+                    </tr>
+                  )
+                })
+                }
+              </tbody>
+            </table>
+            <h3 className="tc f6 f2-m f1-l fw2 black-90 mv3 dark-pink">Total : -{resultExpense}€</h3>
+          </div>
+
+        </div>
+        <div className="pa4">
+          <div className="overflow-auto">
+            <h4 className="tc f6 f2-m f1-l fw2 black-90 mv3">Incomes :</h4>
+            <table className='f6 w-100 mw8 center shadow-5' cellSpacing="0">
+        <thead>
+        <tr>
+          <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Value</th>
+          <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Category</th>
+          <th className="fw6 bb b--black-20 tc pb3 pr3 bg-light-gray">Date</th>
+        </tr>
+        </thead>
+        <tbody className="lh-copy">
+          { filteredIncomes.map( income => {
             return (
-              <div className="flex flex-column-l" key={expense._id}>
-                  <div className= 'tc bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 grow'>
-                  {expense.description} : {expense.value}€
-                  </div>
-              </div>
+              <tr className=" tc bg-light-green shadow-5 grow" key={income._id}>
+                  <td>{income.value}€</td>
+                  <td>{income.category}</td>
+                  <td>{moment(income.date).format("DD MMMM YYYY")}</td>
+              </tr>
             )})
           }
-        </div>
-        <h3>Total : -{resultExpense}€</h3>
-
-      </div>
-        <div>
-          <div>
-          <h4 className="flex flex-column-l ma2 pa3">Incomes :</h4>
-            { filteredIncomes.map( income => {
-              return (
-                <div className="flex flex-column-l" key={income._id}>
-                    <div className= 'tc bg-light-blue br3 pa3 ma2 dib bw2 shadow-5 grow'>
-                    {income.category} : {income.value}€
-                    </div>
-                </div>
-              )})
-            }
+          </tbody>
+          </table>
           </div>
-          <h3>Total : +{resultIncome}€</h3>
+          <h3 className="tc f6 f2-m f1-l fw2 black-90 mv3 dark-green">Total : +{resultIncome}€</h3>
         </div>
-        <h1>Balance today = {totalBalance}€</h1>
-        </div>
-      )
+        <h3 className="tc pa3 f6 f2-m f1-l fw2 black-90 mv3">Balance today = {totalBalance}€</h3>
+      </div>
+    )
   }
 }
 
 export default BalanceToday;
+

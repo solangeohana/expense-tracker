@@ -1,10 +1,7 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
-import moment from 'moment';
-import { Link } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
-
 
 class Home extends Component {
   constructor(props){
@@ -60,17 +57,18 @@ class Home extends Component {
     const totalBalance = resultIncome - resultExpense
     
     return(
-        <div>
+        <div className="bg-lightest-blue">
         <Navbar/>
-        <div>
-            <ul>
-                <li className="f6 f5-l link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l"><Link to={"/expenses"}>Expenses</Link></li>
-                <li className="f6 f5-l link bg-animate black-80 hover-bg-light-pink dib pa3 ph4-l"><Link to={"/incomes"}>Incomes</Link></li>
-            </ul>
+        <div className="tc f1">
+                <a href="/expenses" className="f10 link bg-animate black-80 hover-bg-light-pink dib pa3 ph4-l"> Expenses</a>
+                <a href="/incomes" className="f10 link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l"> Incomes</a>
+            
         </div>
-        <h3 className="f4 f2-m f1-l fw2 black-90 mv3">Total expenses = -{resultExpense}€</h3>
-        <h3 className="f4 f2-m f1-l fw2 black-90 mv3">Total incomes = +{resultIncome}€</h3>
-        <h2 className="f4 f2-m f1-l fw2 black-90 mv3">Balance = {totalBalance}€</h2>
+        <div className="tc">
+        <h3 className="f6 f2-m f1-l fw2 black-90 mv3 dark-pink">Total expenses = -{resultExpense}€</h3>
+        <h3 className="f6 f2-m f1-l fw2 black-90 mv3 dark-green">Total incomes = +{resultIncome}€</h3>
+        <h2 className="f6 f2-m f1-l fw2 black-90 mv3">Balance = {totalBalance}€</h2>
+        </div>
         </div>
       )
   }

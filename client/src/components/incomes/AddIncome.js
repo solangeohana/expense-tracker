@@ -81,7 +81,6 @@ class AddIncome extends Component {
                         <div className="tc"><Button name="ADD" color="bg-dark-green"><input type="submit" value="Submit" /></Button></div>
                         </div>
                     </form>
-                    
                 </div>
             </div>
         )
