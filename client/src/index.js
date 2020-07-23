@@ -8,7 +8,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios'
 
 
-axios.get('/api/checkuser').then(res => {
+axios.get(`${process.env.REACT_APP_API_URL}/api/checkuser`, {withCredentials: true})
+.then(res => {
   ReactDOM.render(
     <Router><App user={res.data} /></Router>, document.getElementById('root'));
 })
@@ -18,3 +19,4 @@ axios.get('/api/checkuser').then(res => {
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+

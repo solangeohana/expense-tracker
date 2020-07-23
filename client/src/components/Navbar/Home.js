@@ -17,7 +17,7 @@ class Home extends Component {
   }
 
   getAllExpenses = () =>{
-    axios.get("/expenses") 
+    axios.get(`${process.env.REACT_APP_API_URL}/expenses`, {withCredentials: true}) 
     .then(response => {
       this.setState({
         listOfExpenses: response.data,
@@ -27,7 +27,7 @@ class Home extends Component {
   }
   
   getAllIncomes = () =>{
-    axios.get("/incomes") 
+    axios.get(`${process.env.REACT_APP_API_URL}/incomes`, {withCredentials: true}) 
     .then(response => {
       this.setState({
         listOfIncomes: response.data,

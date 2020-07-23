@@ -15,7 +15,7 @@ const passport      = require('passport');
 require('./configs/passport');
 
 mongoose
-  .connect('mongodb://localhost/expense-tracker', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -82,4 +82,10 @@ const incomes= require('./routes/income-routes')
 app.use("/incomes", incomes);
 const auth= require('./routes/auth-routes')
 app.use("/api", auth);
+
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 module.exports = app;

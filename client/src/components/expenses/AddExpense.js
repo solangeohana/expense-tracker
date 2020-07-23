@@ -46,7 +46,7 @@ class AddExpense extends Component {
         const category = this.state.category;
         const date = this.state.date;
 
-        axios.post("/expenses", { description, value, category, date })
+        axios.post(`${process.env.REACT_APP_API_URL}/expenses`, {withCredentials: true} , { description, value, category, date })
             .then((resp) => {
                 console.log("response ====> ", resp)
                 this.setState({ description: "", value: "", category: this.state.category[0], date: Date.now() });
