@@ -24,7 +24,7 @@ class Signup extends Component {
         const email = this.state.email;
         const password = this.state.password;
 
-        axios.post(`${process.env.REACT_APP_API_URL}/api/signup`, {withCredentials: true} , { email, password })
+        axios.post(`/api/signup`, { email, password })
             .then((resp) => {
                 this.setState({ email: "", password: "", redirect: true })
                 this.props.updateUser(resp.data)

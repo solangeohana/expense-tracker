@@ -6,7 +6,6 @@ import AddIncome from './components/incomes/AddIncome';
 import ExpenseList from './components/expenses/ExpenseList';
 import Home from './components/Navbar/Home'
 import IncomeList from './components/incomes/IncomeList';
-import EditExpense from './components/expenses/EditExpense'
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import BalanceToday from './components/Today/BalanceToday';
@@ -40,7 +39,6 @@ class App extends Component {
           <Route exact path='/daily' component={BalanceToday}/>
           <Route exact path='/incomes' component={IncomeList}/>
           <Route exact path='/incomes/new' component={AddIncome}/>
-          <Route exact path='/expenses/edit/:id' component={EditExpense}/>
         </Switch>
       </div>
       </div>

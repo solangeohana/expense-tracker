@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios'
 
 
-axios.get(`${process.env.REACT_APP_API_URL}/api/checkuser`, {withCredentials: true})
+axios.get(`/api/checkuser`)
 .then(res => {
   ReactDOM.render(
     <Router><App user={res.data} /></Router>, document.getElementById('root'));

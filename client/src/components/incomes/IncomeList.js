@@ -13,7 +13,7 @@ class IncomeList extends Component {
   }
 
   getAllIncomes = () =>{
-    axios.get(`${process.env.REACT_APP_API_URL}/incomes`, {withCredentials: true}) 
+    axios.get(`/api/incomes`) 
     .then(response => {
       this.setState({
         listOfIncomes: response.data
@@ -22,7 +22,7 @@ class IncomeList extends Component {
   }
 
   deleteHandler = (incomeID) => {
-    axios.delete(  `${process.env.REACT_APP_API_URL}/incomes/`, {withCredentials: true} + incomeID).then(() => {
+    axios.delete(  `/api/incomes/` + incomeID).then(() => {
       this.setState({
         listOfIncomes: this.state.listOfIncomes.filter(i => i._id !== incomeID)
       })
