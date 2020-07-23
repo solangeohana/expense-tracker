@@ -80,7 +80,7 @@ authRoutes.get(
 authRoutes.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: `http://localhost:3000`,
+    successRedirect: process.env.BASE_URL,
     failureRedirect: "/login",
     passReqToCallback: true,
   })

@@ -9,8 +9,6 @@ import IncomeList from './components/incomes/IncomeList';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import BalanceToday from './components/Today/BalanceToday';
-import Navbar from './components/Navbar/Navbar'
-
 class App extends Component {
 
   constructor() {
@@ -38,7 +36,6 @@ class App extends Component {
           <Route exact path='/expenses' component={ExpenseList}/>
           <Route exact path='/daily' component={BalanceToday}/>
           <Route exact path='/incomes' component={IncomeList}/>
-          <Route exact path='/incomes/new' component={AddIncome}/>
         </Switch>
       </div>
       </div>

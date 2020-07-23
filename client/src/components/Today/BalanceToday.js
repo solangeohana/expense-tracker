@@ -64,7 +64,7 @@ class BalanceToday extends Component {
         <Navbar />
         <div className="pa4">
           <div className="overflow-auto">
-            <h6 className="tc f6 f2-m f1-l fw2 black-90 mv3">Expenses :</h6>
+            <h6 className="tc f2-m f1-l black-90 mv3 baskerville fw1 f1 dark-pink">Expenses :</h6>
             <table className='f6 w-100 mw8 center shadow-5' cellSpacing="0">
               <thead>
                 <tr>
@@ -89,13 +89,13 @@ class BalanceToday extends Component {
                 }
               </tbody>
             </table>
-            <h3 className="tc f6 f2-m f1-l fw2 black-90 mv3 dark-pink">Total : -{resultExpense}€</h3>
+            <h3 className="tc f2-m f1-l black-90 mv3 baskerville fw1 f1  dark-pink">Total : -{resultExpense}€</h3>
           </div>
 
         </div>
         <div className="pa4">
           <div className="overflow-auto">
-            <h4 className="tc f6 f2-m f1-l fw2 black-90 mv3">Incomes :</h4>
+            <h4 className="tc f2-m f1-l black-90 mv3 baskerville fw1 f1 dark-green">Incomes :</h4>
             <table className='f6 w-100 mw8 center shadow-5' cellSpacing="0">
         <thead>
         <tr>
@@ -117,9 +117,9 @@ class BalanceToday extends Component {
           </tbody>
           </table>
           </div>
-          <h3 className="tc f6 f2-m f1-l fw2 black-90 mv3 dark-green">Total : +{resultIncome}€</h3>
+          <h3 className="tc f2-m f1-l black-90 mv3 baskerville fw1 f1  dark-green">Total : +{resultIncome}€</h3>
         </div>
-        <h3 className="tc pa3 f6 f2-m f1-l fw2 black-90 mv3">Balance today = {totalBalance}€</h3>
+        <h3 className="tc f2-m f1-l black-90 mv3 baskerville fw1 f1 ">Balance today = {totalBalance}€</h3>
       </div>
     )
   }

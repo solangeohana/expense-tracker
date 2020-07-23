@@ -20,7 +20,7 @@ class ExpenseList extends Component {
     .then(response => {
       console.log("response.data ===>",response.data)
       this.setState({
-        listOfExpenses: response.data
+        listOfExpenses: (response.data).sort((a, b) => a.date < b.date)
       })
     })
   }

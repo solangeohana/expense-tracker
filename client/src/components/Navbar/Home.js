@@ -60,14 +60,14 @@ class Home extends Component {
         <div className="bg-lightest-blue">
         <Navbar/>
         <div className="tc f1">
-                <a href="/expenses" className="f10 link bg-animate black-80 hover-bg-light-pink dib pa3 ph4-l"> Expenses</a>
-                <a href="/incomes" className="f10 link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l"> Incomes</a>
+                <a href="/expenses" className="f10 bb link bg-animate black-80 hover-bg-light-pink dib pa3 ph4-l"> Expenses</a>
+                <a href="/incomes" className="f10 bb link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l"> Incomes</a>
             
         </div>
         <div className="tc">
-        <h3 className="f6 f2-m f1-l fw2 black-90 mv3 dark-pink">Total expenses = -{resultExpense}€</h3>
-        <h3 className="f6 f2-m f1-l fw2 black-90 mv3 dark-green">Total incomes = +{resultIncome}€</h3>
-        <h2 className="f6 f2-m f1-l fw2 black-90 mv3">Balance = {totalBalance}€</h2>
+        <h3 className="mt4 baskerville fw1 f1 dark-pink">Total expenses = -{resultExpense}€</h3>
+        <h3 className="mt2 baskerville fw1 f1 dark-green">Total incomes = +{resultIncome}€</h3>
+        <h2 className="mt2 baskerville fw1 f1">Balance = {totalBalance}€</h2>
         </div>
         </div>
       )
