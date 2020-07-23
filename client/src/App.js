@@ -11,9 +11,9 @@ import Login from './components/auth/Login';
 import BalanceToday from './components/Today/BalanceToday';
 class App extends Component {
 
-  state = {
-    loggedInUser: this.props.user
-  } 
+    state = {
+      loggedInUser: this.props.user
+    } 
 
   updateUser = (newUser) => {
     this.setState({
@@ -26,12 +26,12 @@ class App extends Component {
     return (
       <div className="">
       <div>
+
         <Switch>
           <Route exact path='/' render={() => {
-
             return this.state.loggedInUser ? <Home/> : <Redirect to="/login"></Redirect>
           }}></Route>
-          <Route exact path="/signup" render={() => <Signup updateUser={this.updateUser}></Signup>} />
+          <Route exact path="/signup" render={() => this.state.loggedInUser ? <Redirect to="/"></Redirect> : <Signup updateUser={this.updateUser}></Signup>} />
           <Route exact path="/login" render={() => <Login updateUser={this.updateUser}></Login>} />
           <Route exact path='/expenses' component={ExpenseList}/>
           <Route exact path='/daily' component={BalanceToday}/>

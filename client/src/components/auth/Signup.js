@@ -43,7 +43,7 @@ class Signup extends Component {
             <br/>
             <div>
                 {this.state.errorMessage ? <h1>{this.state.errorMessage}</h1> : null}
-                {this.state.redirect ? <Redirect to="/" /> : null}
+                {/* {this.state.redirect ? <Redirect to="/" /> : null} */}
                 <form className="measure center" onSubmit={this.handleFormSubmit}>
                 <fieldset className="ba b--transparent ph0 mh0">
                 <legend className="f4 fw6 ph0 mh0">Signup</legend>
