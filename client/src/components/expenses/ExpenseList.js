@@ -20,7 +20,7 @@ class ExpenseList extends Component {
     .then(response => {
       console.log("response.data ===>",response.data)
       this.setState({
-        listOfExpenses: (response.data).sort((a, b) => a.date < b.date)
+        listOfExpenses: response.data
       })
     })
   }
@@ -62,7 +62,7 @@ class ExpenseList extends Component {
                   <td>{expense.value}€</td>
                   <td>{expense.category}</td>
                   <td>{moment(expense.date).format("DD MMMM YYYY")}</td>
-                  <td><Button name="Delete" color="bg-hot-pink" onClick={() => this.deleteHandler(expense._id)}>Delete</Button></td>
+                  <td><Button name="Delete" color="bg-dark-pink" onClick={() => this.deleteHandler(expense._id)}>Delete</Button></td>
               </tr>
             )})
           }

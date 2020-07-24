@@ -28,8 +28,9 @@ class Navbar extends Component {
             <nav className="bt bb tc mw7 center mt4">
                 {this.state.redirect ? <Redirect to="/login"></Redirect> : null}
                 <a className="f6 f5-l link bg-animate black-80 hover-bg-light-blue dib pa3 ph4-l" href="/">Home</a>
-                <a className="f6 f5-l link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l" href="/daily">Today</a>
-                <a className="f6 f5-l link bg-animate black-80 hover-bg-light-pink dib pa3 ph4-l" href="/charts">Charts</a>
+                <a className="f6 f5-l link bg-animate black-80 hover-bg-light-purple dib pa3 ph4-l" href="/daily">Today</a>
+                <a className="f6 f5-l link bg-animate black-80 hover-bg-light-pink dib pa3 ph4-l" href="/expenses">Expenses</a>
+                <a className="f6 f5-l link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l" href="/incomes">Incomes</a>
                 <Button onClick={this.handleLogout} name="Logout" color="bg-gray"></Button>
             </nav>
             </header>

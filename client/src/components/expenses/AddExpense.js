@@ -64,10 +64,10 @@ class AddExpense extends Component {
                         <input className="pa2 input-reset ba bg-lightest-green w-60" type="text" name="description" value={this.state.description} onChange={e => this.handleChange(e)} />
                         <br/>
                         <label className="ma2 fw6 f6">Value:</label>
-                        <input className="pa2 input-reset ba bg-lightest-green w-60" type="number" name="value" value={this.state.value} onChange={e => this.handleChange(e)} />
+                        <input className="pa2 input-reset ba bg-lightest-green w-75" type="number" name="value" value={this.state.value} onChange={e => this.handleChange(e)} />
                         <br/>
                         <label className="ma2 fw6 f6">Category:</label>
-                        <select className="pa2 input-reset ba bg-lightest-green w-60" value={this.state.category} onChange={e => this.handleChangeCategory(e)}>
+                        <select className="pa2 input-reset ba bg-lightest-green w-65" value={this.state.category} onChange={e => this.handleChangeCategory(e)}>
                             <option value="select">Select</option>
                             <option value="food">Food</option>
                             <option value="clothes">Clothes</option>

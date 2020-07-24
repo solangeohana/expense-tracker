@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import { Switch, Route, Link, Redirect } from 'react-router-dom'
 
-import AddIncome from './components/incomes/AddIncome';
 import ExpenseList from './components/expenses/ExpenseList';
 import Home from './components/Navbar/Home'
 import IncomeList from './components/incomes/IncomeList';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import BalanceToday from './components/Today/BalanceToday';
+import ExpenseCharts from './components/expenses/ExpensesCharts'
+
 class App extends Component {
 
     state = {
@@ -36,6 +37,7 @@ class App extends Component {
           <Route exact path='/expenses' component={ExpenseList}/>
           <Route exact path='/daily' component={BalanceToday}/>
           <Route exact path='/incomes' component={IncomeList}/>
+          <Route exact path='/charts' component={ExpenseCharts}/>
         </Switch>
       </div>
       </div>

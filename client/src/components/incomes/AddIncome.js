@@ -62,7 +62,7 @@ class AddIncome extends Component {
                     <form className="tl measure center" onSubmit={this.handleFormSubmit}>
                         <div className="mt3">
                         <label className="ma2 fw6 f6">Value:</label>
-                        <input className="pa2 input-reset ba bg-lightest-green w-30" type="number" name="value" value={this.state.value} onChange={e => this.handleChange(e)} />
+                        <input className="pa2 input-reset ba bg-lightest-green w-70" type="number" name="value" value={this.state.value} onChange={e => this.handleChange(e)} />
                         <br/>
                         <label className="ma2 fw6 f6">Category:</label>
                         <select className="pa2 input-reset ba bg-lightest-green w-60" value={this.state.category} onChange={e => this.handleChangeCategory(e)}>
