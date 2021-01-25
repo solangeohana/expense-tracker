@@ -1,4 +1,3 @@
-require('dotenv').config();
 
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -11,6 +10,8 @@ const path         = require('path');
 const cors         = require('cors');
 const session       = require('express-session');
 const passport      = require('passport');
+const dotenv = require('dotenv')
+dotenv.config();
 
 require('./configs/passport');
 
