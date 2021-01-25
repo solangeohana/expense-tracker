@@ -33,7 +33,7 @@ class AddExpense extends Component {
         this.setState({ category: category });
     }
 
-    handleChangeDate = date => {
+    handleChangeDate = (date) => {
         this.setState({
             date: date
         });
